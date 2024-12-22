@@ -29,13 +29,13 @@ public class Lesson04Ex02Controller {
 	// http://localhost/lesson04/ex02/add-student
 	@PostMapping("/add-student")
 	public String addStudent(
-			@ModelAttribute Student student, // request param명과 필드명이 일치하는 것으로 매핑됨
+			@ModelAttribute Student student, // request parameter명과 필드명이 일치하는 것으로 매핑됨
 			Model model) {
 		
-		// DB insert => id를 얻을 수 있음
+		// DB insert => 이 과정을 통해 id를 얻을 수 있음
 		studentBO.addStudent(student);
 		
-		// DB select => id로 => 방금 가입된 학생
+		// DB select => id로 => 방금 가입된 학생을 얻을 수 있음(다른 스레드랑 겹치지 않음)
 		int id = student.getId();
 		student = studentBO.getStudentById(id);
 		
