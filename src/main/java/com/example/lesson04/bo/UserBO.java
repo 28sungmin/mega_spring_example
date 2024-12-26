@@ -20,4 +20,12 @@ public class UserBO {
 	public User getLatestUser() {
 		return userMapper.selectLatestUser();
 	}
+	
+	// i: name
+	// o: boolean 중복 true, 중복 아님 false
+	// output에 int(행의 개수)를 주면 Controller에서 로직이 들어가므로 좋지 못함
+	public boolean isDuplicateByName(String name) {
+		return userMapper.isDuplicateByName(name);
+	}
+	
 }
